@@ -8,8 +8,8 @@ ruby '2.6.3'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
+gem 'rack-cors'
 gem 'rails', '~> 6.0.0.rc1'
-# gem 'rack-cors'
 group :development, :test do
   gem 'byebug', platforms: %I[mri mingw x64_mingw]
   gem 'figaro'
