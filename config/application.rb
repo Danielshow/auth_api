@@ -39,7 +39,7 @@ module AdminBrowser
         resource(
           '*',
           headers: :any,
-          expose: ['Authorization'],
+          expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
           methods: %I[get patch put delete post options show]
         )
       end
