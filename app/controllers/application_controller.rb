@@ -3,9 +3,8 @@
 # Application controller
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
-  respond_to :json
   def render_resource(resource)
-    if resource.errors.empty?
+    if resource&.errors&.empty?
       render json: resource
     else
       validation_error(resource)
@@ -18,10 +17,20 @@ class ApplicationController < ActionController::API
         {
           status: '400',
           title: 'Bad Request',
-          detail: resource.errors,
-          code: '100'
+          message: resource.errors
         }
       ]
     }, status: :bad_request
+  end
+
+  def not_found
+    render json: {
+      errors: [
+        {
+          status: '404',
+          message: 'Not found'
+        }
+      ]
+    }, status: :not_found
   end
 end
