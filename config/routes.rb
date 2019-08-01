@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   get '/profile' => 'profile#index'
   put '/profile' => 'profile#update'
   get '/index' => 'home#index'
+  get '/admin/users' => 'admin#index'
+  get '/admin/login' => 'admin#login'
+  post '/admin/login' => 'admin#create'
+  get '/admin/logout' => 'admin#logout'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

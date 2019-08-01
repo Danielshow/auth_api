@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
          :recoverable, :confirmable, :trackable, :rememberable, :validatable,
          omniauth_providers: %I[facebook google]
   include DeviseTokenAuth::Concerns::User
+  has_one :profile
 end
