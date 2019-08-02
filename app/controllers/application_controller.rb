@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+#ppl frozen_string_literal: true
 
 # Application controller
 class ApplicationController < ActionController::API
@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
     if resource&.errors&.empty?
       render json: {
         message: 'success',
-        token: JsonWebToken.encode(resource)
+        token: JsonWebToken.encode(resource.as_json)
       }
     else
       validation_error(resource)

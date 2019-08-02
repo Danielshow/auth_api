@@ -20,6 +20,7 @@ class ProfileController < ApplicationController
       address: params['address'],
       user: current_user
     ) if is_profile.nil?
+
     render_resource(profile)
   end
 
