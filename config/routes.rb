@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth', controllers: {
-    omniauth_callbacks:  'overrides/omniauth_callbacks',
-    sessions:  'overrides/sessions',
+    omniauth_callbacks: 'overrides/omniauth_callbacks',
+    sessions: 'overrides/sessions',
     registrations: 'overrides/registrations',
-    confirmations: 'overrides/confirmations'
+    confirmations: 'overrides/confirmations',
+    passwords: 'overrides/passwords'
   }
 
   post '/profile' => 'profile#create'

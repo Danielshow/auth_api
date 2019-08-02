@@ -13,14 +13,13 @@ class ProfileController < ApplicationController
 
   def create
     is_profile = Profile.where(user_id: current_user.id).first
-    render_resource(is_profile) if is_profile
-  rescue ActiveRecord::RecordNotFound
+    return render_resource(is_profile) if is_profile
     profile = Profile.create(
       name: params['name'],
       gender: params['gender'],
       address: params['address'],
       user: current_user
-    )
+    ) if is_profile.nil?
     render_resource(profile)
   end
 
