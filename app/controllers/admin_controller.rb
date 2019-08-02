@@ -2,6 +2,7 @@
 
 # Admin Controller
 class AdminController < ActionController::Base
+  layout 'layout'
   def index
     if !@current_admin && session[:user] != 'login'
       render :login
@@ -14,13 +15,20 @@ class AdminController < ActionController::Base
   end
 
   def login
+    if session[:user]
+      return redirect_to admin_users_path
+    end
     @user = User.new
   end
 
   def create
     user = User.where(email: params[:email]).first
     is_valid = user&.valid_password?(params[:password])
-    return redirect_to admin_login_path if user&.role != 'admin' && !is_valid
+    if user&.role != 'admin' && !is_valid
+      session[:message] = 'Invalid login Credentials'
+      return redirect_to admin_login_path
+    end
+    session[:message] = nil
     current_admin(user)
     redirect_to admin_users_path
   end

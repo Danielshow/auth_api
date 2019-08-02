@@ -1,53 +1,26 @@
-<html>
-  <head>
-    <style>
-      table.GeneratedTable {
-        width: 100%;
-        background-color: #ffffff;
-        border-collapse: collapse;
-        border-width: 2px;
-        border-color: #ffcc00;
-        border-style: solid;
-        color: #000000;
-      }
-
-      table.GeneratedTable td, table.GeneratedTable th {
-        border-width: 2px;
-        border-color: #ffcc00;
-        border-style: solid;
-        padding: 3px;
-      }
-
-      table.GeneratedTable thead {
-          background-color: #ffcc00;
-      }
-      </style>
-  </head>
-  <body>
-    <%= link_to 'logout', '/admin/logout' %>
-    <table class="GeneratedTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Gender</th>
-          <th>Address</th>
-          <th>Email</th>
-          <th>Current SignIn Time</th>
-          <th>SignIn Count</th>
-        </tr>
-      </thead>
-      <% @user.each do |u| %>
-      <tbody>
-        <tr>
-          <td><%= u.name %></td>
-          <td><%= u.gender %></td>
-          <td><%= u.address %></td>
-          <td><%= u.user.email %></td>
-          <td><%= time_ago_in_words(u.user.current_sign_in_at) if u.user.current_sign_in_at %> </td>
-          <td><%= u.user.sign_in_count %></td>
-       </tr>
-      </tbody>
-    <% end %>
-    </table>
-  </body>
-</html>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Current SignIn Time</th>
+        <th>SignIn Count</th>
+      </tr>
+    </thead>
+    <% @user.each do |u| %>
+    <tbody>
+      <tr>
+        <td><%= u.name %></td>
+        <td><%= u.gender %></td>
+        <td><%= u.address %></td>
+        <td><%= u.user.email %></td>
+        <td><%= time_ago_in_words(u.user.current_sign_in_at) if u.user.current_sign_in_at %> </td>
+        <td><%= u.user.sign_in_count %></td>
+     </tr>
+    </tbody>
+  <% end %>
+  </table>
+</div>

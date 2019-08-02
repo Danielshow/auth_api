@@ -1,5 +1,16 @@
-<%= form_with url: '/admin/login' do |f| %>
-  Email: <%= f.text_field :email %><br />
-  Password : <%= f.password_field :password %><br />
-  <%= f.submit %>
-<% end %>
+<div class="form-layout">
+  <p class="alert"><%= session[:message] %></p>
+  <%= form_with url: '/admin/login' do |f| %>
+    <div class="form-field">
+      <%= f.label :email %>
+      <%= f.text_field :email %><br />
+    </div>
+    <div class="form-field">
+      <%= f.label :password %>
+      <%= f.password_field :password %><br />
+    </div>
+    <div class="form-field">
+      <%= f.submit 'Login', class: 'bg-orange' %>
+    </div>
+  <% end %>
+</div>
