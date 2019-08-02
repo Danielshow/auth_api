@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get '/admin/login' => 'admin#login'
   post '/admin/login' => 'admin#create'
   get '/admin/logout' => 'admin#logout'
+  get '/assets' => 'public#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
