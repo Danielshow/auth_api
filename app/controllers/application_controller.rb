@@ -2,11 +2,15 @@
 
 # Application controller
 class ApplicationController < ActionController::API
+  before_action :validates_key
   include DeviseTokenAuth::Concerns::SetUserByToken
   include ActionController::MimeResponds
   def render_resource(resource)
     if resource&.errors&.empty?
-      render json: resource
+      render json: {
+        message: 'success',
+        token: JsonWebToken.encode(resource)
+      }
     else
       validation_error(resource)
     end
@@ -33,5 +37,15 @@ class ApplicationController < ActionController::API
         }
       ]
     }, status: :not_found
+  end
+
+  def validates_key
+    unless params[:apikey]
+      return render json: {
+        message: 'No Api key found'
+      }, status: :bad_request
+    end
+    key = Apikey.where(key: params[:apikey]).first
+    not_found unless key
   end
 end
