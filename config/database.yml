@@ -1,13 +1,8 @@
 
 default: &default
   adapter: postgresql
-  # adapter: mysql2
-  # To use mysql uncomment the above and add the line below to the gemfile
-  # gem 'mysql2'
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5  } %>
 
 development:
   <<: *default

@@ -21,6 +21,20 @@ class AdminController < ActionController::Base
     @user = User.new
   end
 
+  def reset
+  end
+
+  def message; end
+
+  def reset_password
+     user = { email: params[:email], redirect_url: 'localhost:3000/admin/login' }
+     resource = User.send_reset_password_instructions(user)
+     yield resource if block_given?
+     respond_to do |format|
+        format.html { render :message }
+     end
+  end
+
   def create
     user = User.where(email: params[:email]).first
     is_valid = user&.valid_password?(params[:password])

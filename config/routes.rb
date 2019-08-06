@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     passwords: 'overrides/passwords'
   }
 
-  post '/profile' => 'profile#create'
   get '/profile' => 'profile#index'
   put '/profile' => 'profile#update'
   get '/index' => 'home#index'
@@ -16,5 +15,8 @@ Rails.application.routes.draw do
   post '/admin/login' => 'admin#create'
   get '/admin/logout' => 'admin#logout'
   get '/assets' => 'public#index'
+  post '/reset/password' => 'admin#reset_password'
+  get '/reset/password' => 'admin#reset'
+  get 'confirm/message' => 'admin#message'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
