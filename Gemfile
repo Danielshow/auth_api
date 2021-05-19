@@ -11,7 +11,7 @@ gem 'jwt'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 gem 'rack-cors'
 gem 'rails', '~> 6.0.0.rc1'
 group :development, :test do
